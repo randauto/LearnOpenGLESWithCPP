@@ -1,30 +1,27 @@
 package com.bip.learnopengleswithcpp.activity;
 
-import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bip.learnopengleswithcpp.R;
 import com.bip.learnopengleswithcpp.renderer.GLLayer;
 
-public class ShaderFilterActivity extends Activity {
+public class ShaderFilterActivity extends AppCompatActivity implements View.OnClickListener {
 
     GLSurfaceView mView;
-    private MenuItem mItemCapture0;
-    private MenuItem mItemCapture1;
-    private MenuItem mItemCapture2;
-    private MenuItem mItemCapture3;
-    private MenuItem mItemCapture4;
-    private MenuItem mItemCapture5;
-    private MenuItem mItemCapture6;
-    private MenuItem mItemCapture7;
-    private MenuItem mItemCapture8;
-    private MenuItem mItemCapture9;
-    private MenuItem mItemCapture10;
-    private MenuItem mItemCapture11;
+    private Button mItemCapture0;
+    private Button mItemCapture1;
+    private Button mItemCapture2;
+    private Button mItemCapture3;
+    private Button mItemCapture4;
+    private Button mItemCapture5;
+    private Button mItemCapture6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +29,28 @@ public class ShaderFilterActivity extends Activity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        mView = new GLSurfaceView(this);
+
+        setContentView(R.layout.activity_shader_filter);
+
+        mView = findViewById(R.id.glSurfaceView);
         mView.setEGLContextClientVersion(2);
         mView.setRenderer(new GLLayer(this));
 
-        setContentView(mView);
+        mItemCapture0 = findViewById(R.id.Original);
+        mItemCapture1 = findViewById(R.id.Warm);
+        mItemCapture2 = findViewById(R.id.VanGogh);
+        mItemCapture3 = findViewById(R.id.Monet);
+        mItemCapture4 = findViewById(R.id.Pop);
+        mItemCapture5 = findViewById(R.id.Manga);
+        mItemCapture6 = findViewById(R.id.Blur);
+
+        mItemCapture0.setOnClickListener(this);
+        mItemCapture1.setOnClickListener(this);
+        mItemCapture2.setOnClickListener(this);
+        mItemCapture3.setOnClickListener(this);
+        mItemCapture4.setOnClickListener(this);
+        mItemCapture5.setOnClickListener(this);
+        mItemCapture6.setOnClickListener(this);
     }
 
     /**
@@ -53,10 +67,12 @@ public class ShaderFilterActivity extends Activity {
         super.onPause();
         mView.onPause();
     }
+    /*
+     */
 
     /**
      * menu button setup
-     */
+     *//*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         mItemCapture0 = menu.add("Original");
@@ -68,40 +84,31 @@ public class ShaderFilterActivity extends Activity {
         mItemCapture6 = menu.add("Blur");
         return true;
 
-    }
-
+    }*/
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item == mItemCapture0) {
+    public void onClick(View v) {
+        int item = v.getId();
+
+        if (item == R.id.Original) {
             GLLayer.shader_selection = 0;
-            return true;
         }
-        if (item == mItemCapture1) {
+        if (item == R.id.Warm) {
             GLLayer.shader_selection = GLLayer.WARM;
-            return true;
         }
-        if (item == mItemCapture2) {
+        if (item == R.id.VanGogh) {
             GLLayer.shader_selection = GLLayer.VAN_GOGH;
-            return true;
         }
-        if (item == mItemCapture3) {
+        if (item == R.id.Monet) {
             GLLayer.shader_selection = GLLayer.MONET;
-            return true;
         }
-        if (item == mItemCapture4) {
+        if (item == R.id.Pop) {
             GLLayer.shader_selection = GLLayer.POP;
-            return true;
         }
-        if (item == mItemCapture5) {
+        if (item == R.id.Manga) {
             GLLayer.shader_selection = GLLayer.MANGA;
-            return true;
         }
-        if (item == mItemCapture6) {
+        if (item == R.id.Blur) {
             GLLayer.shader_selection = GLLayer.BLUR;
-            return true;
         }
-
-        return false;
     }
-
 }

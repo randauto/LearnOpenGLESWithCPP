@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/Original"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Original" />
+
+            <Button
+                android:id="@+id/Warm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Warm" />
+
+            <Button
+                android:id="@+id/VanGogh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Van Gogh" />
+
+            <Button
+                android:id="@+id/Monet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monet" />
+
+            <Button
+                android:id="@+id/Pop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pop" />
+
+            <Button
+                android:id="@+id/Manga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manga" />
+
+            <Button
+                android:id="@+id/Blur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blur" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <android.opengl.GLSurfaceView
+        android:id="@+id/glSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
