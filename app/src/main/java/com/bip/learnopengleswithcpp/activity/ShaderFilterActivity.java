@@ -35,6 +35,8 @@ public class ShaderFilterActivity extends AppCompatActivity implements View.OnCl
         mView = findViewById(R.id.glSurfaceView);
         mView.setEGLContextClientVersion(2);
         mView.setRenderer(new GLLayer(this));
+        mView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+
 
         mItemCapture0 = findViewById(R.id.Original);
         mItemCapture1 = findViewById(R.id.Warm);
@@ -110,5 +112,8 @@ public class ShaderFilterActivity extends AppCompatActivity implements View.OnCl
         if (item == R.id.Blur) {
             GLLayer.shader_selection = GLLayer.BLUR;
         }
+
+        // request render when change type of filter.
+        mView.requestRender();
     }
 }
