@@ -1,4 +1,4 @@
-package com.bip.learnopengleswithcpp;
+package com.bip.learnopengleswithcpp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.bip.learnopengleswithcpp.databinding.ActivityMainBinding;
+import com.bip.learnopengleswithcpp.GameLibJNIWrapper;
 
 public class MainActivity extends AppCompatActivity {
 

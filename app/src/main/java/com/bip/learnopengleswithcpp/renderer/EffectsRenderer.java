@@ -13,6 +13,7 @@ import android.opengl.GLUtils;
 import com.bip.learnopengleswithcpp.GameLibJNIWrapper;
 import com.bip.learnopengleswithcpp.R;
 import com.bip.learnopengleswithcpp.model.Square;
+import com.bip.learnopengleswithcpp.utils.GLToolbox;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -39,12 +40,7 @@ public class EffectsRenderer implements GLSurfaceView.Renderer {
     private void generateSquare() {
         GLES20.glGenTextures(2, textures, 0);
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textures[0]);
-
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_LINEAR);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_CLAMP_TO_EDGE);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE);
-
+        GLToolbox.initTexParams();
         GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, photo, 0);
         square = new Square();
     }
@@ -76,7 +72,11 @@ public class EffectsRenderer implements GLSurfaceView.Renderer {
         if (effect != null) {
             effect.release();
         }
-        grayScaleEffect();
+
+        if (EffectFactory.isEffectSupported(EffectFactory.EFFECT_GRAYSCALE)) {
+            grayScaleEffect();
+        }
+
         square.draw(textures[1]);
     }
 }

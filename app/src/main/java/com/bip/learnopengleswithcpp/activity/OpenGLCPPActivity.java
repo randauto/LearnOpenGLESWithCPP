@@ -1,4 +1,4 @@
-package com.bip.learnopengleswithcpp;
+package com.bip.learnopengleswithcpp.activity;
 
 
 import android.opengl.GLSurfaceView;
