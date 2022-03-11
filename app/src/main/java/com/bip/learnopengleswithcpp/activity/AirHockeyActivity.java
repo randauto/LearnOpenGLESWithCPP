@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.bip.learnopengleswithcpp.renderer.AirHockeyRenderer;
+import com.bip.learnopengleswithcpp.renderer.AirHockeyRenderer2;
 
 public class AirHockeyActivity extends AppCompatActivity {
     private GLSurfaceView glSurfaceView;
@@ -34,7 +35,7 @@ public class AirHockeyActivity extends AppCompatActivity {
 
         if (supportEs2) {
             glSurfaceView.setEGLContextClientVersion(2);
-            glSurfaceView.setRenderer(new AirHockeyRenderer(this));
+            glSurfaceView.setRenderer(new AirHockeyRenderer2(this));
             renderSet = true;
         } else {
             Toast.makeText(this, "Not support opengles 2", Toast.LENGTH_SHORT).show();

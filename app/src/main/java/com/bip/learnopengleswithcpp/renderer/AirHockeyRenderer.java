@@ -53,7 +53,11 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
 
                 // Mallets
                 0f, -0.25f,
-                0f, 0.25f
+                0f, 0.25f,
+
+                // center rectangle.
+                0.0f, 0.0f
+
         };
 
         vertexData = ByteBuffer.allocateDirect(tableVerticesWithTriangles.length * BYTES_PER_FLOAT)
@@ -65,6 +69,8 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+
+        // xóa màu nền màn hình và thiết lập màu cho nó luôn.
         GLES20.glClearColor(0f, 0f, 0f, 0f);
 
         // Doc noi dung trong file shader.
@@ -73,7 +79,7 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         String fragmentShaderSource = TextResourceReader
                 .readTextFileFromResource(context, R.raw.simple_fragment_shader);
 
-        // compilder no
+        // biên dịch nó
 
         int vertexShader = ShaderHelper.compileVertexShader(vertexShaderSource);
         int fragmentShader = ShaderHelper.compileFragmentShader(fragmentShaderSource);
@@ -92,10 +98,15 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         uColorLocation = GLES20.glGetUniformLocation(program, U_COLOR);
         aPositionLocation = GLES20.glGetAttribLocation(program, A_POSITION);
 
+        // nói cho Opengl đọc dữ liệu từ vị trí đầu tiên của mảng.
         vertexData.position(0);
 
+        // chỉ ra nơi để tìm position ở đâu? ở trong mảng data.
+        // mỗi một điểm tương ứng chứa 2 thành phần floating point.
         GLES20.glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GLES20.GL_FLOAT,
                 false, 0, vertexData);
+
+        // sau khi đã liên kết data với thuộc tính rồi thì cần enabled nó lên.
         GLES20.glEnableVertexAttribArray(aPositionLocation);
 
     }
@@ -111,7 +122,9 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
 
         // Draw the table.
-        GLES20.glUniform4f(uColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);
+        // Cập nhật giá trị u_Color trong code shader fragment
+        GLES20.glUniform4f(uColorLocation, 0.0f, 1.0f, 1.0f, 1.0f);
+        // bắt đầu vẽ hình chữ nhật, tọa độ đỉnh bắt đầu từ 0 và đọc 6 điểm. tương ứng là 3 đỉnh.
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 6);
 
         // draw center dividing line
@@ -123,8 +136,11 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         GLES20.glDrawArrays(GLES20.GL_POINTS, 8, 1);
 
         // Draw the second mallet red.
-        GLES20.glUniform4f(uColorLocation,1.0f, 0.0f, 0.0f, 1.0f );
+        GLES20.glUniform3f(uColorLocation,1.0f, 0.0f, 0.0f );
         GLES20.glDrawArrays(GLES20.GL_POINTS, 9, 1);
 
+        // Draw the point at center of rectangle.
+        GLES20.glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
+        GLES20.glDrawArrays(GLES20.GL_POINTS, 10, 1);
     }
 }
