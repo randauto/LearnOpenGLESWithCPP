@@ -44,4 +44,9 @@ class OwnCustomView : View {
         super.onDraw(canvas)
     }
 
+    fun setFillColor(color: Int) {
+        backgroundPain?.color = color
+        invalidate()
+    }
+
 }
