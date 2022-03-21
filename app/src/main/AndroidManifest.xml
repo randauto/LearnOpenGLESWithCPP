@@ -13,15 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnOpenGLESWithCPP">
+
         <activity
             android:name=".activity.AirHockeyActivity"
             android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
@@ -32,7 +27,16 @@
             android:exported="true" />
         <activity
             android:name=".activity.ShaderFilterActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.learn.proandroidkotlin.activity.MyGLActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
