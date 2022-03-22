@@ -1,8 +1,9 @@
 package com.learn.proandroidkotlin.model
 
 import android.opengl.GLES20
-import com.bip.learnopengleswithcpp.utils.GLToolbox.loadShader
 import com.learn.proandroidkotlin.render.MyRender
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
 import java.nio.FloatBuffer
 
 class Triangle {
@@ -42,5 +43,46 @@ gl_FragColor = vColor;
 
     init {
         val vertexShader = MyRender.loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode)
+        val fragmentShader = MyRender.loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode)
+
+        // create empty OpenGL ES program
+        program = GLES20.glCreateProgram()
+
+        // add vertex and fragment shader to program
+        GLES20.glAttachShader(program!!, vertexShader)
+        GLES20.glAttachShader(program!!, fragmentShader)
+
+        // creates opengl es program executables
+        GLES20.glLinkProgram(program!!)
+
+        // init vertex byte buffer for shape corrdinates
+        val bb = ByteBuffer.allocateDirect(triangleCoords.size * 4).order(ByteOrder.nativeOrder())
+
+        vertexBuffer = bb.asFloatBuffer()
+        // add corrdinates to buffer
+        vertexBuffer!!.put(triangleCoords)
+        vertexBuffer!!.position(0)
+    }
+
+    fun draw() {
+        GLES20.glUseProgram(program!!)
+
+        // get handle to vertex shader's vPosition member.
+        positionHandle = GLES20.glGetAttribLocation(program!!, "vPosition")
+        GLES20.glEnableVertexAttribArray(positionHandle!!)
+        GLES20.glVertexAttribPointer(positionHandle!!, COORDS_PER_VERTEX, GLES20.GL_FLOAT, false, vertexStride, vertexBuffer)
+
+        // get handle to fragment shader's vColor member.
+        colorHandle = GLES20.glGetUniformLocation(program!!, "vColor")
+        // set color for drawing the triangle.
+        GLES20.glUniform4fv(colorHandle!!, 1, color, 0)
+
+        // draw the triangle.
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertexCount)
+
+        // disabled vertex array
+        GLES20.glDisableVertexAttribArray(positionHandle!!)
+
+
     }
 }
