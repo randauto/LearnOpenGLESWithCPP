@@ -9,8 +9,16 @@
     <View
         android:background="@android:color/black"
         android:id="@+id/viewCenter"
+        android:visibility="gone"
         android:layout_centerInParent="true"
         android:layout_width="300dp"
         android:layout_height="300dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        android:id="@+id/llContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
