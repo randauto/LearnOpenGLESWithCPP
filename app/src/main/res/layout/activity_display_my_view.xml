@@ -7,7 +7,25 @@
     tools:context="com.learn.proandroidkotlin.activity.DisplayMyViewActivity">
 
 
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/ticket_edge_treatment_drawable"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go go!" />
+    </RelativeLayout>
+
     <com.learn.proandroidkotlin.customviews.AnimationExampleView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
 </LinearLayout>
