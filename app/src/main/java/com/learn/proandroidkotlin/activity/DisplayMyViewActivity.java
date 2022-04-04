@@ -14,12 +14,12 @@ public class DisplayMyViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_my_view);
 
-        Chart chart = (Chart) findViewById(R.id.myChart);
+/*        Chart chart = (Chart) findViewById(R.id.myChart);
 
         float[] data = new float[20];
         for (int i = 0; i < data.length; i++) {
             data[i] = (float) Math.random() * 10.f;
         }
-        chart.setDataPoints(data);
+        chart.setDataPoints(data);*/
     }
 }
