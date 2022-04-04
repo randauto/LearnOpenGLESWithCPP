@@ -7,7 +7,10 @@
     tools:context="com.learn.proandroidkotlin.activity.DisplayMyViewActivity">
 
 
-    <com.learn.proandroidkotlin.customviews.AnimationExampleView
+    <com.learn.proandroidkotlin.customviews.Chart
+        android:id="@+id/myChart"
+        android:padding="10dp"
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

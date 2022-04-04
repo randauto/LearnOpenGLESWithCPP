@@ -13,6 +13,9 @@ public class MainAnimationActivity extends AppCompatActivity {
     private float angle = 0f;
     private View viewCenter;
     ValueAnimator angleAnimator;
+
+    private float scaleX = 1f;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +31,8 @@ public class MainAnimationActivity extends AppCompatActivity {
         angleAnimator.addUpdateListener(animation -> {
             angle = (float) animation.getAnimatedValue(); // lay ra gia tri hien tai cua animation
             Log.d("TTTT", "Angle = " + angle);
-
+            Log.d("TTTT", "scaleX = " + scaleX);
+            viewCenter.setRotation(angle);
         });
     }
 

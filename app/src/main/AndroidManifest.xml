@@ -17,12 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnOpenGLESWithCPP">
         <activity
-            android:name="com.learn.proandroidkotlin.activity.MainAnimationActivity"
-            android:exported="true">
-
-
-        </activity>
-        <activity
             android:name="com.learn.proandroidkotlin.activity.DisplayMyViewActivity"
             android:exported="true">
             <intent-filter>
@@ -32,14 +26,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.AirHockeyActivity"
+            android:name="com.learn.proandroidkotlin.activity.MainAnimationActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".activity.AirHockeyActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.OpenGLCPPActivity"
             android:exported="true" />
         <activity
             android:name="com.bip.mediax.VideoSnapActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" />
@@ -48,7 +45,7 @@
             android:exported="true" />
         <activity
             android:name="com.learn.proandroidkotlin.activity.MyGLActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
