@@ -29,6 +29,11 @@
 
     <com.learn.proandroidkotlin.customviews.MyDrawView
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent" />
+
+    <com.learn.proandroidkotlin.customviews.BlurMaskFilterView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
