@@ -6,11 +6,13 @@ import android.graphics.PointF;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bip.learnopengleswithcpp.R;
+import com.learn.proandroidkotlin.customviews.MyViewTouch;
 
 public class PathEffectActivity extends AppCompatActivity {
     private ImageView imageView;
@@ -33,6 +35,23 @@ public class PathEffectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_path_effect);
 
         setOnTouchImageView();
+
+        initView();
+    }
+
+    private void initView() {
+        Button btnClear = findViewById(R.id.btnClear);
+        MyViewTouch myViewTouch = findViewById(R.id.myViewTouch);
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (myViewTouch.getCurrentMode() == MyViewTouch.MODE_CLEAR) {
+                    myViewTouch.setMode(MyViewTouch.MODE_NORMAL);
+                } else {
+                    myViewTouch.setMode(MyViewTouch.MODE_CLEAR);
+                }
+            }
+        });
     }
 
     @SuppressLint("ClickableViewAccessibility")
