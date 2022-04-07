@@ -4,7 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
+import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
+import android.graphics.PorterDuffColorFilter;
 
 public class ImageHelper {
     public static Bitmap handleImageEffect(Bitmap bm, float hue, float saturation, float lum) {
@@ -32,5 +34,14 @@ public class ImageHelper {
         canvas.drawBitmap(bm, 0, 0, paint);
 
         return bmp;
+    }
+
+    public static Bitmap changeLightFilter(Bitmap bp, int mul, int add) {
+        Bitmap bitmap = Bitmap.createBitmap(bp.getWidth(), bp.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColorFilter(new LightingColorFilter(mul, add));
+        canvas.drawBitmap(bp, 0, 0, paint);
+        return bitmap;
     }
 }
