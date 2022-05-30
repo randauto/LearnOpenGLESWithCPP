@@ -5,12 +5,14 @@ import android.opengl.GLES20
 import android.opengl.GLSurfaceView
 import android.opengl.Matrix
 import android.os.SystemClock
+import com.learn.proandroidkotlin.model.Circle
 import com.learn.proandroidkotlin.model.Triangle
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
 class MyRender : GLSurfaceView.Renderer {
     var triangle: Triangle? = null
+    var circle: Circle? = null
 
     @Volatile
     var angle: Float = 0f
@@ -53,6 +55,7 @@ class MyRender : GLSurfaceView.Renderer {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)
 
         triangle = triangle ?: Triangle()
+        circle = circle ?: Circle()
 
         // Create a rotation for the triangle
         val time = SystemClock.uptimeMillis() % 4000L
@@ -69,6 +72,7 @@ class MyRender : GLSurfaceView.Renderer {
         // for the matrix multiplication product to be correct.
         Matrix.multiplyMM(scratch, 0, vPMatrix, 0, rotationMatrix, 0)
 
-        triangle?.draw(scratch)
+//        triangle?.draw(scratch)
+        circle?.draw(scratch)
     }
 }

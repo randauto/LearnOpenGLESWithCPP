@@ -51,6 +51,12 @@
         <activity
             android:name="com.learn.proandroidkotlin.activity.MyGLActivity"
             android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name="com.learn.proandroidkotlin.activity.Cube3D"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
