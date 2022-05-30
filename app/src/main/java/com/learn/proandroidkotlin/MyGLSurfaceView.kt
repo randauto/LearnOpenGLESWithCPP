@@ -4,6 +4,7 @@ import android.app.ActivityManager
 import android.content.Context
 import android.opengl.GLSurfaceView
 import android.util.Log
+import android.view.MotionEvent
 import com.learn.proandroidkotlin.render.MyRender
 import javax.microedition.khronos.egl.EGL10
 import javax.microedition.khronos.egl.EGLConfig
@@ -52,5 +53,38 @@ class MyGLSurfaceView(context: Context?) : GLSurfaceView(context) {
         }
 
         setEGLContextFactory(ContextFactory())
+    }
+    private val TOUCH_SCALE_FACTOR: Float = 180.0f / 320f
+    private var previousX: Float = 0f
+    private var previousY: Float = 0f
+
+    override fun onTouchEvent(e: MotionEvent?): Boolean {
+        val x: Float = e!!.x
+        val y: Float = e.y
+
+        when (e.action) {
+            MotionEvent.ACTION_MOVE -> {
+
+                var dx: Float = x - previousX
+                var dy: Float = y - previousY
+
+                // reverse direction of rotation above the mid-line
+                if (y > height / 2) {
+                    dx *= -1
+                }
+
+                // reverse direction of rotation to left of the mid-line
+                if (x < width / 2) {
+                    dy *= -1
+                }
+
+                renderer!!.angle += (dx + dy) * TOUCH_SCALE_FACTOR
+                requestRender()
+            }
+        }
+
+        previousX = x
+        previousY = y
+        return true
     }
 }

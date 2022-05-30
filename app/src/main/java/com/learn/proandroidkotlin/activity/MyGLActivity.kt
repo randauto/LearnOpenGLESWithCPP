@@ -1,24 +1,19 @@
 package com.learn.proandroidkotlin.activity
 
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
 import com.bip.learnopengleswithcpp.R
 import com.learn.proandroidkotlin.MyGLSurfaceView
-import com.learn.proandroidkotlin.customlayout.OwnCustomLayout
-import com.learn.proandroidkotlin.customviews.OwnCustomView
-import java.util.*
 
 class MyGLActivity : AppCompatActivity() {
     var glView: MyGLSurfaceView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*glView = MyGLSurfaceView(this)
-        val newView = OwnCustomView(this)
+        glView = MyGLSurfaceView(this)
+//        val newView = OwnCustomView(this)
         val frame = FrameLayout(this)
         val layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
@@ -26,8 +21,8 @@ class MyGLActivity : AppCompatActivity() {
         )
         frame.layoutParams = layoutParams
         frame.addView(glView)
-        frame.addView(newView)
-        setContentView(R.layout.activity_my_glactivity)
+        setContentView(frame)
+/*        frame.addView(newView)
         val button = findViewById<View>(R.id.btnChangeColor)
         button.setOnClickListener {
             val view = findViewById<View>(R.id.myView) as OwnCustomView
@@ -35,7 +30,7 @@ class MyGLActivity : AppCompatActivity() {
 
         }*/
 
-        setContentView(R.layout.activity_my_glactivity)
+/*        setContentView(R.layout.activity_my_glactivity)
 
         val customLayout = findViewById<OwnCustomLayout>(R.id.custom_layout)
         val rnd = Random()
@@ -47,6 +42,6 @@ class MyGLActivity : AppCompatActivity() {
             view.layoutParams = ViewGroup.LayoutParams(width, height)
             view.setPadding(2, 2, 2, 2)
             customLayout.addView(view)
-        }
+        }*/
     }
 }
