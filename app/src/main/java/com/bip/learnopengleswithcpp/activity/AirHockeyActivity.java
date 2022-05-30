@@ -1,7 +1,5 @@
 package com.bip.learnopengleswithcpp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ConfigurationInfo;
@@ -10,8 +8,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.bip.learnopengleswithcpp.renderer.AirHockeyRenderer;
-import com.bip.learnopengleswithcpp.renderer.AirHockeyRenderer2;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bip.learnopengleswithcpp.renderer.AirHockeyRendererOrtho;
 
 public class AirHockeyActivity extends AppCompatActivity {

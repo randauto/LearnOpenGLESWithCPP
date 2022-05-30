@@ -17,17 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnOpenGLESWithCPP">
         <activity
-            android:name="com.learn.proandroidkotlin.activity.CustomViewWithCameraActivity"
+            android:name="com.learn.proandroidkotlin.activity.DrawImagewPolytopolyActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name="com.learn.proandroidkotlin.activity.PathEffectActivity"
             android:exported="true">
+
         </activity>
         <activity
             android:name="com.learn.proandroidkotlin.activity.MainAnimationActivity"
@@ -52,7 +50,19 @@
             android:exported="true" />
         <activity
             android:name="com.learn.proandroidkotlin.activity.MyGLActivity"
-            android:exported="true" />
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name="com.learn.proandroidkotlin.activity.Cube3D"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
