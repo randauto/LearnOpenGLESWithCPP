@@ -43,11 +43,7 @@
         <activity
             android:name="com.bip.learnopengleswithcpp.activity.OpenGLCPPActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
@@ -59,11 +55,20 @@
             android:exported="true" />
         <activity
             android:name="com.bip.learnopengleswithcpp.activity.ShaderFilterActivity"
-            android:exported="true" />
+            android:exported="true">
+
+
+        </activity>
         <activity
             android:name="com.learn.proandroidkotlin.activity.MyGLActivity"
             android:exported="true"
-            tools:ignore="Instantiatable"></activity>
+            tools:ignore="Instantiatable">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.learn.proandroidkotlin.activity.Cube3D"
             android:exported="true">

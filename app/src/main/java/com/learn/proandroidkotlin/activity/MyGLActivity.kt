@@ -22,26 +22,15 @@ class MyGLActivity : AppCompatActivity() {
         frame.layoutParams = layoutParams
         frame.addView(glView)
         setContentView(frame)
-/*        frame.addView(newView)
-        val button = findViewById<View>(R.id.btnChangeColor)
-        button.setOnClickListener {
-            val view = findViewById<View>(R.id.myView) as OwnCustomView
-            view.setFillColor(Color.GRAY)
+    }
 
-        }*/
+    override fun onPause() {
+        super.onPause()
+        glView?.onPause()
+    }
 
-/*        setContentView(R.layout.activity_my_glactivity)
-
-        val customLayout = findViewById<OwnCustomLayout>(R.id.custom_layout)
-        val rnd = Random()
-        for (i in 0 until 50) {
-            val view = OwnCustomView(this)
-            val width = rnd.nextInt(200) + 50
-            val height = rnd.nextInt(100) + 100
-
-            view.layoutParams = ViewGroup.LayoutParams(width, height)
-            view.setPadding(2, 2, 2, 2)
-            customLayout.addView(view)
-        }*/
+    override fun onResume() {
+        super.onResume()
+        glView?.onResume()
     }
 }

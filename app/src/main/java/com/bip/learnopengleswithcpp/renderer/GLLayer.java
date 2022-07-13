@@ -100,6 +100,7 @@ public class GLLayer implements GLSurfaceView.Renderer {
 	static public final int POP= 4;
 	static public final int MANGA = 5;
 	static public final int BLUR= 6;
+	static public final int GRAY= 7;
 
 	//and more ...
 
@@ -183,6 +184,7 @@ public class GLLayer implements GLSurfaceView.Renderer {
 			case POP: id = R.raw.pop_fragment_shader;break;
 			case MANGA: id = R.raw.manga_fragment_shader;break;
 			case BLUR: id = R.raw.blur_fragment_shader;break;
+			case GRAY: id = R.raw.gray_fragment_shader;break;
 			default: id = R.raw._fragment_shader;break;
 		}
 		

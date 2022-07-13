@@ -112,6 +112,9 @@ public class ShaderFilterActivity extends AppCompatActivity implements View.OnCl
         if (item == R.id.Blur) {
             GLLayer.shader_selection = GLLayer.BLUR;
         }
+        if (item == R.id.Gray) {
+            GLLayer.shader_selection = GLLayer.GRAY;
+        }
 
         // request render when change type of filter.
         mView.requestRender();

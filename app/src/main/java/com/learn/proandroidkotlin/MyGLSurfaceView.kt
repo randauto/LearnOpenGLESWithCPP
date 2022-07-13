@@ -5,14 +5,14 @@ import android.content.Context
 import android.opengl.GLSurfaceView
 import android.util.Log
 import android.view.MotionEvent
-import com.learn.proandroidkotlin.render.MyRender
+import com.learn.proandroidkotlin.render.MyGLRender
 import javax.microedition.khronos.egl.EGL10
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.egl.EGLContext
 import javax.microedition.khronos.egl.EGLDisplay
 
 class MyGLSurfaceView(context: Context?) : GLSurfaceView(context) {
-    var renderer: MyRender? = null
+    var renderer: MyGLRender? = null
     var supports3x = false
     var minVers = 0
 
@@ -20,7 +20,7 @@ class MyGLSurfaceView(context: Context?) : GLSurfaceView(context) {
         fetchVersion()
         setEGLContextClientVersion(2)
         setEGLContextFactory()
-        renderer = MyRender()
+        renderer = MyGLRender(context)
         setRenderer(renderer)
         renderMode = RENDERMODE_WHEN_DIRTY
     }
@@ -41,7 +41,11 @@ class MyGLSurfaceView(context: Context?) : GLSurfaceView(context) {
         val EGL_CONTEXT_CLIENT_VERSION = 0x3098
 
         class ContextFactory : EGLContextFactory {
-            override fun createContext(egl: EGL10, display: EGLDisplay, eglConfig: EGLConfig): EGLContext {
+            override fun createContext(
+                egl: EGL10,
+                display: EGLDisplay,
+                eglConfig: EGLConfig
+            ): EGLContext {
                 val attrib_list = intArrayOf(EGL_CONTEXT_CLIENT_VERSION, 2, EGL10.EGL_NONE)
                 return egl!!.eglCreateContext(display, eglConfig, EGL10.EGL_NO_CONTEXT, attrib_list)
             }
@@ -54,6 +58,7 @@ class MyGLSurfaceView(context: Context?) : GLSurfaceView(context) {
 
         setEGLContextFactory(ContextFactory())
     }
+
     private val TOUCH_SCALE_FACTOR: Float = 180.0f / 320f
     private var previousX: Float = 0f
     private var previousY: Float = 0f
@@ -78,7 +83,7 @@ class MyGLSurfaceView(context: Context?) : GLSurfaceView(context) {
                     dy *= -1
                 }
 
-                renderer!!.angle += (dx + dy) * TOUCH_SCALE_FACTOR
+//                renderer!!.angle += (dx + dy) * TOUCH_SCALE_FACTOR
                 requestRender()
             }
         }
