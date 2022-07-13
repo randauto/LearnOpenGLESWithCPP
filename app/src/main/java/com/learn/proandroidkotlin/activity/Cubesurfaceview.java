@@ -3,7 +3,6 @@ package com.learn.proandroidkotlin.activity;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
-//import es2.learning.ViewPortRenderer;
 
 public class Cubesurfaceview extends GLSurfaceView {
 

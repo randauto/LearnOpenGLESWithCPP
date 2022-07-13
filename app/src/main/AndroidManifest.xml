@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.bip.learnopengleswithcpp">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -18,17 +19,15 @@
         android:theme="@style/Theme.LearnOpenGLESWithCPP">
         <activity
             android:name="com.learn.proandroidkotlin.activity.DrawTextDemoActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"
+            tools:ignore="Instantiatable">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
             android:name="com.learn.proandroidkotlin.activity.DrawImagewPolytopolyActivity"
-            android:exported="true"></activity>
+            android:exported="true"
+            tools:ignore="Instantiatable"></activity>
         <activity
             android:name="com.learn.proandroidkotlin.activity.PathEffectActivity"
             android:exported="true"></activity>
@@ -43,10 +42,18 @@
             android:exported="true" />
         <activity
             android:name="com.bip.learnopengleswithcpp.activity.OpenGLCPPActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name="com.bip.mediax.VideoSnapActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:ignore="Instantiatable" />
         <activity
             android:name="com.bip.learnopengleswithcpp.activity.MainActivity"
             android:exported="true" />
@@ -55,7 +62,8 @@
             android:exported="true" />
         <activity
             android:name="com.learn.proandroidkotlin.activity.MyGLActivity"
-            android:exported="true"></activity>
+            android:exported="true"
+            tools:ignore="Instantiatable"></activity>
         <activity
             android:name="com.learn.proandroidkotlin.activity.Cube3D"
             android:exported="true">

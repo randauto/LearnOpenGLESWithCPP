@@ -16,7 +16,6 @@ void on_surface_created() {
 
 void on_surface_changed(jint width, jint height) {
     glViewport(0, 0, width, height);
-    glClearColor(0, 0, 0, 1);
 }
 
 void on_draw_frame() {
