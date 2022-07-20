@@ -1,5 +1,6 @@
 package com.learn.proandroidkotlin.render
 
+import android.content.Context
 import android.opengl.GLES10
 import android.opengl.GLES20
 import android.opengl.GLSurfaceView
@@ -16,6 +17,10 @@ class MyRender : GLSurfaceView.Renderer {
 
     @Volatile
     var angle: Float = 0f
+
+    constructor(cointext: Context?) {
+    }
+
 
     companion object {
         fun loadShader(type: Int, shaderCode: String): Int {
@@ -72,7 +77,7 @@ class MyRender : GLSurfaceView.Renderer {
         // for the matrix multiplication product to be correct.
         Matrix.multiplyMM(scratch, 0, vPMatrix, 0, rotationMatrix, 0)
 
-//        triangle?.draw(scratch)
+        triangle?.draw(scratch)
         circle?.draw(scratch)
     }
 }

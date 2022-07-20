@@ -8,14 +8,10 @@ import java.nio.FloatBuffer
 
 class Triangle {
     private val vertexShaderCode =
-    // This matrix member variable provides a hook to manipulate
-        // the coordinates of the objects that use this vertex shader
         "uniform mat4 uMVPMatrix;" +
                 "attribute vec4 vPosition;" +
                 "void main() {" +
-                // the matrix must be included as a modifier of gl_Position
-                // Note that the uMVPMatrix factor *must be first* in order
-                // for the matrix multiplication product to be correct.
+
                 "  gl_Position = uMVPMatrix * vPosition;" +
                 "}"
     val fragmentShaderCode = """
@@ -106,7 +102,7 @@ gl_FragColor = vColor;
         // get handle to fragment shader's vColor member.
         colorHandle = GLES20.glGetUniformLocation(program!!, "vColor")
         // set color for drawing the triangle.
-        GLES20.glUniform4fv(colorHandle!!, 1, colorBlue, 0)
+        GLES20.glUniform4fv(colorHandle!!, 1, colorRed, 0)
         GLES20.glLineWidth(10.0f)
         GLES20.glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA)
         // get handle to shape's transformation matrix

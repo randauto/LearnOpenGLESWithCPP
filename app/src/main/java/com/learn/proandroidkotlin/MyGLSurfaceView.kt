@@ -6,13 +6,14 @@ import android.opengl.GLSurfaceView
 import android.util.Log
 import android.view.MotionEvent
 import com.learn.proandroidkotlin.render.MyGLRender
+import com.learn.proandroidkotlin.render.MyRender
 import javax.microedition.khronos.egl.EGL10
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.egl.EGLContext
 import javax.microedition.khronos.egl.EGLDisplay
 
 class MyGLSurfaceView(context: Context?) : GLSurfaceView(context) {
-    var renderer: MyGLRender? = null
+    var renderer: MyRender? = null
     var supports3x = false
     var minVers = 0
 
@@ -20,7 +21,7 @@ class MyGLSurfaceView(context: Context?) : GLSurfaceView(context) {
         fetchVersion()
         setEGLContextClientVersion(2)
         setEGLContextFactory()
-        renderer = MyGLRender(context)
+        renderer = MyRender(context)
         setRenderer(renderer)
         renderMode = RENDERMODE_WHEN_DIRTY
     }
